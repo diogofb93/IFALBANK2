@@ -5,17 +5,30 @@
  */
 package br.com.View;
 
+import br.com.DAO.Conexao;
+import br.com.DAO.UsuarioDAO;
+import br.com.Modelo.ModelConta;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Diogo
  */
 public class ViewCadastro extends javax.swing.JFrame {
-
+    ModelConta mc;
+    UsuarioDAO usuarioDao;
+    
     /**
      * Creates new form ViewCadastro
      */
+    
+
     public ViewCadastro() {
         initComponents();
+        usuarioDao = new UsuarioDAO();
+        mc = new ModelConta();
     }
 
     /**
@@ -36,7 +49,7 @@ public class ViewCadastro extends javax.swing.JFrame {
         jTextFieldSenha = new javax.swing.JTextField();
         jTextFieldTipoDaConta = new javax.swing.JTextField();
         jTextFieldSaldoInicial = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jButtonSalvar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -53,9 +66,31 @@ public class ViewCadastro extends javax.swing.JFrame {
 
         jLabelSaldoInicial.setText("Saldo inicial");
 
-        jButton1.setText("Cadastrar");
+        jTextFieldNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNomeActionPerformed(evt);
+            }
+        });
+
+        jTextFieldSaldoInicial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldSaldoInicialActionPerformed(evt);
+            }
+        });
+
+        jButtonSalvar.setText("Cadastrar");
+        jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalvarActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -84,10 +119,10 @@ public class ViewCadastro extends javax.swing.JFrame {
                                     .addComponent(jTextFieldSaldoInicial, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(53, 53, 53)
-                        .addComponent(jButton1)
+                        .addComponent(jButtonSalvar)
                         .addGap(27, 27, 27)
                         .addComponent(jButton2)))
-                .addContainerGap(323, Short.MAX_VALUE))
+                .addContainerGap(200, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,7 +145,7 @@ public class ViewCadastro extends javax.swing.JFrame {
                     .addComponent(jTextFieldSaldoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(jButtonSalvar)
                     .addComponent(jButton2))
                 .addGap(25, 25, 25))
         );
@@ -141,23 +176,55 @@ public class ViewCadastro extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        setBounds(0, 0, 665, 388);
+        setSize(new java.awt.Dimension(543, 388));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
+        mc.setNome(jTextFieldNome.getText());
+        mc.setSenha(jTextFieldSenha.getText());
+        mc.setTipo(jTextFieldTipoDaConta.getText());
+        mc.setSaldo(jTextFieldSaldoInicial.getText());
+        
+        try {
+            usuarioDao.inserir(mc);
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("teste");
+        }
+        ViewTelaPrincipalGerente telaGerente = new ViewTelaPrincipalGerente();
+        telaGerente.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonSalvarActionPerformed
+
+    private void jTextFieldSaldoInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSaldoInicialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldSaldoInicialActionPerformed
+
+    private void jTextFieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNomeActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ViewTelaPrincipalGerente telaGerente = new ViewTelaPrincipalGerente();
+        telaGerente.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,8 +262,8 @@ public class ViewCadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelNome;
     private javax.swing.JLabel jLabelSaldoInicial;

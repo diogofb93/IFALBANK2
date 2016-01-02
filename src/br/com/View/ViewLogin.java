@@ -5,16 +5,21 @@
  */
 package br.com.View;
 
-import br.com.DAO.Conectar;
+import br.com.Bo.LoginBO;
+import br.com.DAO.Conexao;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Diogo
  */
 public class ViewLogin extends javax.swing.JFrame {
+ Conexao conexao= new Conexao();
 
+ 
     /**
      * Creates new form ViewLogin
      */
@@ -77,6 +82,12 @@ public class ViewLogin extends javax.swing.JFrame {
             }
         });
 
+        jPasswordFieldSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordFieldSenhaActionPerformed(evt);
+            }
+        });
+
         jButtonLogar.setText("Logar");
         jButtonLogar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,9 +134,9 @@ public class ViewLogin extends javax.swing.JFrame {
                     .addComponent(jLabelLogin)
                     .addComponent(jTextFieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelSenha)
-                    .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonLogar)
@@ -138,26 +149,28 @@ public class ViewLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void jButtonLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogarActionPerformed
-        if(jTextFieldLogin.getText().equals("admin")&&jPasswordFieldSenha.getText().equals("1234")){
-        ViewTelaPrincipalGerente telaGerente = new ViewTelaPrincipalGerente();
-        telaGerente.setVisible(true);
-        dispose();
-        }else if (jTextFieldLogin.getText().equals("cliente")&&jPasswordFieldSenha.getText().equals("1234")){
-            ViewTelaPrincipal tela = new ViewTelaPrincipal();
-            tela.setVisible(true);
-            dispose();
-        }else{
-        System.out.println("Usuario invalido");
+        LoginBO login = new LoginBO();
+          String senha = new String(jPasswordFieldSenha.getPassword());
+     try {
+         login.validarLogin(jTextFieldLogin.getText(), senha);
+     } catch (SQLException ex) {
+         System.out.println(getName());
+         System.out.println("erro"+ex.getMessage());
+     }
     }//GEN-LAST:event_jButtonLogarActionPerformed
-    }
+    
     private void jButtonFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFecharActionPerformed
         System.exit(0);
         
     }//GEN-LAST:event_jButtonFecharActionPerformed
 
     private void jTextFieldLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldLoginActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextFieldLoginActionPerformed
+
+    private void jPasswordFieldSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordFieldSenhaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,12 +198,6 @@ public class ViewLogin extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ViewLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        Conectar conecta= new Conectar();
-        try {
-            conecta.getConectar();
-        } catch (Exception ex) {
-            Logger.getLogger(ViewLogin.class.getName()).log(Level.SEVERE, null, ex);
-        }
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
