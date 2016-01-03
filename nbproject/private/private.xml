@@ -5,9 +5,8 @@
         <group>
             <file>file:/D:/Users/Diogo/Dropbox/IFALBANK2/IFALBANK2/src/br/com/DAO/UsuarioDAO.java</file>
             <file>file:/D:/Users/Diogo/Dropbox/IFALBANK2/IFALBANK2/src/br/com/Bo/LoginBO.java</file>
-            <file>file:/D:/Users/Diogo/Dropbox/IFALBANK2/IFALBANK2/src/br/com/View/ViewBusca.java</file>
-            <file>file:/D:/Users/Diogo/Dropbox/IFALBANK2/IFALBANK2/src/br/com/View/ViewTelaPrincipalGerente.java</file>
-            <file>file:/D:/Users/Diogo/Dropbox/IFALBANK2/IFALBANK2/src/br/com/View/ViewTelaPrincipal.java</file>
+            <file>file:/D:/Users/Diogo/Dropbox/IFALBANK2/IFALBANK2/src/br/com/Modelo/ModelConta.java</file>
+            <file>file:/D:/Users/Diogo/Dropbox/IFALBANK2/IFALBANK2/src/br/com/View/ViewCadastro.java</file>
             <file>file:/D:/Users/Diogo/Dropbox/IFALBANK2/IFALBANK2/src/br/com/View/ViewLogin.java</file>
         </group>
     </open-files>

@@ -29,12 +29,12 @@ import java.util.logging.Logger;
     public void inserir(ModelConta mc) throws Exception {
         this.conexao.conectar();
         try {
-            PreparedStatement ps = conexao.con.prepareStatement("INSERT INTO CLIENTE(NOME, SENHA, TIPO, SALDO) VALUES(?,?,?,?)");
+            PreparedStatement ps = conexao.con.prepareStatement("INSERT INTO CLIENTE(NOME, SENHA, TIPO, SALDO, CPF) VALUES(?,?,?,?,?)");
             ps.setString(1, mc.getNome());
             ps.setString(2, mc.getSenha());
             ps.setString(3, mc.getTipo());
             ps.setString(4, mc.getSaldo());
-            
+            ps.setString(1, mc.getCPF());
             System.out.println("Inserido com sucesso");
             ps.execute();
             conexao.desconectar();
@@ -45,7 +45,7 @@ import java.util.logging.Logger;
             ResultSet rs;
         this.conexao.conectar();
         try {
-            PreparedStatement ps = this.conexao.con.prepareStatement("SELECT ID_USUARIO,NOME,TIPO,SALDO FROM CLIENTE WHERE ID_USUARIO = ?");
+            PreparedStatement ps = this.conexao.con.prepareStatement("SELECT ID_USUARIO,NOME,TIPO,SALDO,CPF FROM CLIENTE WHERE ID_USUARIO = ?");
             ps.setInt(1,mc.getBusca_usuario());
             rs = ps.executeQuery(); 
                 boolean next = rs.next();
@@ -53,6 +53,7 @@ import java.util.logging.Logger;
                 mc.setNome(rs.getString("NOME"));
                 mc.setSaldo(rs.getString("SALDO"));
                 mc.setTipo(rs.getString("TIPO"));
+                mc.setCPF(rs.getString("CPF"));
         	 
            conexao.desconectar();
         }catch(SQLException ex){
@@ -87,4 +88,22 @@ import java.util.logging.Logger;
         throw new SQLException("Erro ao checar dados!: "+e.getMessage());
     }   
     }
+    
+    
+    public void RetornaNumeroDaConta (ModelConta mc) throws Exception{
+            ResultSet rs;
+        this.conexao.conectar();
+        
+        try {
+            PreparedStatement ps = this.conexao.con.prepareStatement("SELECT ID_USUARIO FROM CLIENTE WHERE CPF = ?");
+            ps.setString(1,mc.getCPF());
+            rs = ps.executeQuery(); 
+                boolean next = rs.next();
+                mc.setN_usuario(rs.getInt("ID_USUARIO"));
+           conexao.desconectar();
+    }catch(SQLException ex){
+            System.out.println("Erro "+ex.getMessage());
+        }  
+    }
 }
+

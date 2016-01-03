@@ -10,12 +10,27 @@ package br.com.Modelo;
  * @author Diogo
  */
 public class ModelConta {
-    private String nome;
-    private String senha;
-    private String tipo;
-    private String saldo;
+    private static String nome;
+    private static String senha;
+    private static String tipo;
+    private static String saldo;
+    private static String CPF;
     private int n_usuario;
-    private int busca_usuario;
+    private static int busca_usuario;
+
+    /**
+     * @return the CPF
+     */
+    public static String getCPF() {
+        return CPF;
+    }
+
+    /**
+     * @param aCPF the CPF to set
+     */
+    public static void setCPF(String aCPF) {
+        CPF = aCPF;
+    }
 
     /**
      * @return the nome

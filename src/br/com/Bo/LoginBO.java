@@ -31,6 +31,9 @@ public class LoginBO {
             if(mc.getTipo().equalsIgnoreCase("gerente")){
                 ViewTelaPrincipalGerente telaGerente = new ViewTelaPrincipalGerente();
                 telaGerente.setVisible(true);
+            } else{
+                ViewTelaPrincipal telaPrincipal = new ViewTelaPrincipal();
+                telaPrincipal.setVisible(true);
                 
             }
 
