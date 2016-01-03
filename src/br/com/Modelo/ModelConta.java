@@ -13,15 +13,18 @@ public class ModelConta {
     private static String nome;
     private static String senha;
     private static String tipo;
-    private static String saldo;
+    private  double saldo;
     private static String CPF;
     private static int n_usuario;
     private static int nova_conta;
     private static int busca_usuario;
 
     /**
-     * @return the CPF
+     * @return the saldo
      */
+
+
+
   
 
     /**
@@ -69,16 +72,7 @@ public class ModelConta {
     /**
      * @return the saldo
      */
-    public String getSaldo() {
-        return saldo;
-    }
 
-    /**
-     * @param saldo the saldo to set
-     */
-    public void setSaldo(String saldo) {
-        this.saldo = saldo;
-    }
 
 
     /**
@@ -135,6 +129,20 @@ public class ModelConta {
      */
     public void setCPF(String CPF) {
         this.CPF = CPF;
+    }
+
+    /**
+     * @return the saldo
+     */
+    public double getSaldo() {
+        return saldo;
+    }
+
+    /**
+     * @param saldo the saldo to set
+     */
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
     }
 
     /**

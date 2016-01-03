@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.com.DAO;
 
 import br.com.Modelo.ModelConta;
@@ -33,7 +29,7 @@ import java.util.logging.Logger;
             ps.setString(1, mc.getNome());
             ps.setString(2, mc.getSenha());
             ps.setString(3, mc.getTipo());
-            ps.setString(4, mc.getSaldo());
+            ps.setDouble(4, mc.getSaldo());
             ps.setString(5, mc.getCPF());
             System.out.println("Inserido com sucesso");
             ps.execute();
@@ -51,7 +47,7 @@ import java.util.logging.Logger;
                 boolean next = rs.next();
                 mc.setN_usuario(rs.getInt("ID_USUARIO"));
                 mc.setNome(rs.getString("NOME"));
-                mc.setSaldo(rs.getString("SALDO"));
+                mc.setSaldo(rs.getDouble("SALDO"));
                 mc.setTipo(rs.getString("TIPO"));
                 mc.setCPF(rs.getString("CPF"));
         	 
@@ -80,7 +76,7 @@ import java.util.logging.Logger;
           ModelConta mc= new ModelConta();
            mc.setN_usuario(rs.getInt("ID_USUARIO"));
            mc.setNome(rs.getString("NOME"));
-           mc.setSaldo(rs.getString("SALDO"));
+           mc.setSaldo(rs.getDouble("SALDO"));
            mc.setTipo(rs.getString("TIPO"));
            isLoginValido= true;         
           return isLoginValido;

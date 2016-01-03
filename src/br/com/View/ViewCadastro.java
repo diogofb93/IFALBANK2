@@ -209,10 +209,11 @@ public class ViewCadastro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
+       Double saldo = Double.parseDouble(jTextFieldSaldoInicial.getText());
         mc.setNome(jTextFieldNome.getText());
         mc.setSenha(jTextFieldSenha.getText());
         mc.setTipo(jTextFieldTipoDaConta.getText());
-        mc.setSaldo(jTextFieldSaldoInicial.getText());
+        mc.setSaldo(saldo);
         mc.setCPF(jTextFieldCPF.getText());
         
         try {

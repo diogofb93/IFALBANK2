@@ -6,6 +6,9 @@
             <file>file:/D:/Users/Diogo/Dropbox/IFALBANK2/IFALBANK2/src/br/com/DAO/UsuarioDAO.java</file>
             <file>file:/D:/Users/Diogo/Dropbox/IFALBANK2/IFALBANK2/src/br/com/Bo/LoginBO.java</file>
             <file>file:/D:/Users/Diogo/Dropbox/IFALBANK2/IFALBANK2/src/br/com/Modelo/ModelConta.java</file>
+            <file>file:/D:/Users/Diogo/Dropbox/IFALBANK2/IFALBANK2/src/br/com/util/exeptions/ValorInvalidoException.java</file>
+            <file>file:/D:/Users/Diogo/Dropbox/IFALBANK2/IFALBANK2/src/br/com/View/ViewDepositar.java</file>
+            <file>file:/D:/Users/Diogo/Dropbox/IFALBANK2/IFALBANK2/src/br/com/Bo/ContaBO.java</file>
             <file>file:/D:/Users/Diogo/Dropbox/IFALBANK2/IFALBANK2/src/br/com/View/ViewCadastro.java</file>
             <file>file:/D:/Users/Diogo/Dropbox/IFALBANK2/IFALBANK2/src/br/com/View/ViewLogin.java</file>
         </group>

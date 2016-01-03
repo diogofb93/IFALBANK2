@@ -5,6 +5,9 @@
  */
 package br.com.View;
 
+import br.com.Modelo.ModelConta;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Diogo
@@ -83,6 +86,11 @@ public class ViewTelaPrincipal extends javax.swing.JFrame {
         );
 
         jButtonDepositar.setText("Depositar");
+        jButtonDepositar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDepositarActionPerformed(evt);
+            }
+        });
 
         jButtonSacar.setText("Sacar");
 
@@ -136,7 +144,7 @@ public class ViewTelaPrincipal extends javax.swing.JFrame {
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButtonExtrato, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
                     .addComponent(jButtonSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(24, 367, Short.MAX_VALUE))
+                .addGap(24, 371, Short.MAX_VALUE))
         );
 
         setJMenuBar(jMenuBar1);
@@ -162,6 +170,15 @@ public class ViewTelaPrincipal extends javax.swing.JFrame {
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonSairActionPerformed
+
+    private void jButtonDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDepositarActionPerformed
+        // TODO add your handling code here:
+        ViewDepositar telaDepositar = new ViewDepositar();
+        telaDepositar.setVisible(true);
+        ModelConta mc = new ModelConta();
+        JOptionPane.showMessageDialog(null, "seu saldo atual e: "+mc.getSaldo());
+        dispose();
+    }//GEN-LAST:event_jButtonDepositarActionPerformed
 
     /**
      * @param args the command line arguments

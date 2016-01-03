@@ -197,7 +197,7 @@ public class ViewBusca extends javax.swing.JFrame {
             usuarioDao.buscar(mc);
             jTextFieldId.setText(String.valueOf(mc.getN_usuario()));
             jTextFieldNome.setText(mc.getNome());
-            jTextFieldSaldo.setText(mc.getSaldo());
+            jTextFieldSaldo.setText(String.valueOf(mc.getSaldo()));
             jTextFieldTipo.setText(mc.getTipo());
         } catch (Exception ex) {
            System.out.println("Erro"+ex.getMessage());
