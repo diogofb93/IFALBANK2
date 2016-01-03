@@ -23,14 +23,19 @@ public class LoginBO {
     public LoginBO(){
         this.conexao = new Conexao();
     }
-    
+    //VALIDAR
      public void validarLogin(String nUsuario, String senhaUsuario) throws SQLException {
          ModelConta mc= new ModelConta();
          UsuarioDAO usuarioDao = new UsuarioDAO();
         if (usuarioDao.isLoginValido(nUsuario, senhaUsuario) == true) {
-            ViewTelaPrincipalGerente telaGerente = new ViewTelaPrincipalGerente();
-            telaGerente.setVisible(true);
+            if(mc.getTipo().equalsIgnoreCase("gerente")){
+                ViewTelaPrincipalGerente telaGerente = new ViewTelaPrincipalGerente();
+                telaGerente.setVisible(true);
+                
+            }
+
             }
      }
 }
+
 
