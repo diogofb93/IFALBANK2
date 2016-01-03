@@ -34,7 +34,7 @@ import java.util.logging.Logger;
             ps.setString(2, mc.getSenha());
             ps.setString(3, mc.getTipo());
             ps.setString(4, mc.getSaldo());
-            ps.setString(1, mc.getCPF());
+            ps.setString(5, mc.getCPF());
             System.out.println("Inserido com sucesso");
             ps.execute();
             conexao.desconectar();
@@ -99,7 +99,8 @@ import java.util.logging.Logger;
             ps.setString(1,mc.getCPF());
             rs = ps.executeQuery(); 
                 boolean next = rs.next();
-                mc.setN_usuario(rs.getInt("ID_USUARIO"));
+                mc.setNova_conta(rs.getInt("ID_USUARIO"));
+                System.out.println(mc.getNova_conta());
            conexao.desconectar();
     }catch(SQLException ex){
             System.out.println("Erro "+ex.getMessage());

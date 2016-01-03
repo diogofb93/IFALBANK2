@@ -15,22 +15,14 @@ public class ModelConta {
     private static String tipo;
     private static String saldo;
     private static String CPF;
-    private int n_usuario;
+    private static int n_usuario;
+    private static int nova_conta;
     private static int busca_usuario;
 
     /**
      * @return the CPF
      */
-    public static String getCPF() {
-        return CPF;
-    }
-
-    /**
-     * @param aCPF the CPF to set
-     */
-    public static void setCPF(String aCPF) {
-        CPF = aCPF;
-    }
+  
 
     /**
      * @return the nome
@@ -115,6 +107,34 @@ public class ModelConta {
      */
     public void setN_usuario(int n_usuario) {
         this.n_usuario = n_usuario;
+    }
+
+    /**
+     * @return the nova_conta
+     */
+    public int getNova_conta() {
+        return nova_conta;
+    }
+
+    /**
+     * @param nova_conta the nova_conta to set
+     */
+    public void setNova_conta(int nova_conta) {
+        this.nova_conta = nova_conta;
+    }
+
+    /**
+     * @return the CPF
+     */
+    public String getCPF() {
+        return CPF;
+    }
+
+    /**
+     * @param CPF the CPF to set
+     */
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
     }
 
     /**

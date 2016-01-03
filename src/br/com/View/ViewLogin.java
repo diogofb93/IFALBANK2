@@ -72,7 +72,7 @@ public class ViewLogin extends javax.swing.JFrame {
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
-        jLabelLogin.setText("Login");
+        jLabelLogin.setText("Numero da conta");
 
         jLabelSenha.setText("Senha");
 
@@ -123,7 +123,7 @@ public class ViewLogin extends javax.swing.JFrame {
                         .addComponent(jButtonLogar)
                         .addGap(38, 38, 38)
                         .addComponent(jButtonFechar)))
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

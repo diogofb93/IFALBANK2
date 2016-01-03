@@ -217,7 +217,8 @@ public class ViewCadastro extends javax.swing.JFrame {
         
         try {
             usuarioDao.inserir(mc);
-            JOptionPane.showMessageDialog(null, "o NUMERO DA CONTA E:"+mc.getN_usuario());
+            usuarioDao.RetornaNumeroDaConta(mc);
+            JOptionPane.showMessageDialog(null, "o NUMERO DA CONTA E:"+mc.getNova_conta());
         } catch(Exception e) {
             System.out.println(e.getMessage());
         }
