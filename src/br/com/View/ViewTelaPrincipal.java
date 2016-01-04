@@ -169,7 +169,7 @@ public class ViewTelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
-        // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_jButtonSairActionPerformed
 
     private void jButtonDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDepositarActionPerformed
@@ -191,7 +191,9 @@ public class ViewTelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSacarActionPerformed
 
     private void jButtonTransferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTransferirActionPerformed
-       
+        ViewTransferir telaTransferir = new ViewTransferir();
+        telaTransferir.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButtonTransferirActionPerformed
 
     /**

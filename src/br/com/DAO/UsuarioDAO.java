@@ -45,11 +45,11 @@ import java.util.logging.Logger;
             ps.setInt(1,mc.getBusca_usuario());
             rs = ps.executeQuery(); 
                 boolean next = rs.next();
-                mc.setN_usuario(rs.getInt("ID_USUARIO"));
-                mc.setNome(rs.getString("NOME"));
-                mc.setSaldo(rs.getDouble("SALDO"));
-                mc.setTipo(rs.getString("TIPO"));
-                mc.setCPF(rs.getString("CPF"));
+                mc.setBusca_usuario(rs.getInt("ID_USUARIO"));
+                mc.setNomeBusca(rs.getString("NOME"));
+                mc.setSaldoBusca(rs.getDouble("SALDO"));
+                mc.setTipoBusca(rs.getString("TIPO"));
+                mc.setCPFBusca(rs.getString("CPF"));
         	 
            conexao.desconectar();
         }catch(SQLException ex){

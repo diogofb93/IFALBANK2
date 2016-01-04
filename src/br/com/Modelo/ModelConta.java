@@ -18,6 +18,11 @@ public  class ModelConta {
     private static int n_usuario;
     private static int nova_conta;
     private static int busca_usuario;
+    private String nomeBusca;
+    private String tipoBusca;
+    private Double SaldoBusca;
+    private String CPFBusca;
+    
 
     /**
      * @return the saldo
@@ -142,6 +147,62 @@ public  class ModelConta {
      */
     public void setSaldo(double saldo) {
         this.saldo = saldo;
+    }
+
+    /**
+     * @return the nomeBusca
+     */
+    public String getNomeBusca() {
+        return nomeBusca;
+    }
+
+    /**
+     * @param nomeBusca the nomeBusca to set
+     */
+    public void setNomeBusca(String nomeBusca) {
+        this.nomeBusca = nomeBusca;
+    }
+
+    /**
+     * @return the tipoBusca
+     */
+    public String getTipoBusca() {
+        return tipoBusca;
+    }
+
+    /**
+     * @param tipoBusca the tipoBusca to set
+     */
+    public void setTipoBusca(String tipoBusca) {
+        this.tipoBusca = tipoBusca;
+    }
+
+    /**
+     * @return the SaldoBusca
+     */
+    public Double getSaldoBusca() {
+        return SaldoBusca;
+    }
+
+    /**
+     * @param SaldoBusca the SaldoBusca to set
+     */
+    public void setSaldoBusca(Double SaldoBusca) {
+        this.SaldoBusca = SaldoBusca;
+    }
+
+    /**
+     * @return the CPFBusca
+     */
+    public String getCPFBusca() {
+        return CPFBusca;
+    }
+
+    /**
+     * @param CPFBusca the CPFBusca to set
+     */
+    public void setCPFBusca(String CPFBusca) {
+        this.CPFBusca = CPFBusca;
     }
 
     /**
