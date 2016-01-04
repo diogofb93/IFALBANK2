@@ -8,6 +8,7 @@ package br.com.View;
 import br.com.Bo.ContaBO;
 import br.com.DAO.UsuarioDAO;
 import br.com.Modelo.ContaCorrente;
+import br.com.Modelo.ContaPoupanca;
 import br.com.Modelo.ModelConta;
 import br.com.Modelo.ModelSacarDepositar;
 import br.com.util.exeptions.ValorInvalidoException;
@@ -150,9 +151,26 @@ public class ViewDepositar extends javax.swing.JFrame {
                telaPrincipal.setVisible(true);
                dispose();
             } catch (ValorInvalidoException ex) {
-                JOptionPane.showMessageDialog(null, "erro");
+                JOptionPane.showMessageDialog(null, "Erro"+ex.getMessage());
             } catch (Exception ex) {
-                Logger.getLogger(ViewDepositar.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "Erro"+ex.getMessage());
+            }
+            
+        }else if(mc.getTipo().equalsIgnoreCase("poupanca")){
+            msd = new ContaPoupanca();
+            this.contaBo= new ContaBO(msd);
+            Double deposito = Double.parseDouble(jTextFieldDeposito.getText());
+            try {
+                contaBo.validarDeposito(deposito);
+               usuarioDao.updateConta(mc);
+               JOptionPane.showMessageDialog(null, "Depositado com sucesso\n Novo saldo: "+mc.getSaldo());
+               
+               telaPrincipal.setVisible(true);
+               dispose();
+            } catch (ValorInvalidoException ex) {
+                JOptionPane.showMessageDialog(null, "Erro"+ex.getMessage());
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Erro"+ex.getMessage());
             }
             
         }

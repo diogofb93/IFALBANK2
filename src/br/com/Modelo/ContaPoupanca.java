@@ -10,9 +10,15 @@ import br.com.util.exeptions.SaldoInsuficienteException;
  * @author Diogo
  */
 public class ContaPoupanca extends ModelSacarDepositar{
-    	public void depositar(double valorDeposito) {
-		this.saldo += (valorDeposito*1.5);
+    
+      private double novoSaldo;
+    ModelConta mc = new ModelConta();
+    public void depositar(double valorDeposito) {
+		this.novoSaldo=mc.getSaldo()+ (valorDeposito*1.5);
+                mc.setSaldo(this.novoSaldo);
+
 	}
+
 
 	public void sacar(double valorSaque) throws SaldoInsuficienteException {
 		if(saldo >= valorSaque) {
