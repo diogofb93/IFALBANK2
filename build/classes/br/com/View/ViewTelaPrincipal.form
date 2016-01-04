@@ -98,7 +98,7 @@
                       <Component id="jButtonExtrato" pref="59" max="32767" attributes="0"/>
                       <Component id="jButtonSair" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="24" pref="371" max="32767" attributes="0"/>
+                  <EmptySpace min="24" pref="375" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -175,6 +175,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Sacar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSacarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonTransferir">
           <Properties>

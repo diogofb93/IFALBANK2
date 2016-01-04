@@ -93,6 +93,11 @@ public class ViewTelaPrincipal extends javax.swing.JFrame {
         });
 
         jButtonSacar.setText("Sacar");
+        jButtonSacar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSacarActionPerformed(evt);
+            }
+        });
 
         jButtonTransferir.setText("Transferir");
 
@@ -144,7 +149,7 @@ public class ViewTelaPrincipal extends javax.swing.JFrame {
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButtonExtrato, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
                     .addComponent(jButtonSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(24, 371, Short.MAX_VALUE))
+                .addGap(24, 375, Short.MAX_VALUE))
         );
 
         setJMenuBar(jMenuBar1);
@@ -179,6 +184,15 @@ public class ViewTelaPrincipal extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "seu saldo atual e: "+mc.getSaldo());
         dispose();
     }//GEN-LAST:event_jButtonDepositarActionPerformed
+
+    private void jButtonSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSacarActionPerformed
+            // TODO add your handling code here:
+            ViewSaque telaSaque = new ViewSaque();                    
+        telaSaque.setVisible(true);
+        ModelConta mc = new ModelConta();
+        JOptionPane.showMessageDialog(null, "seu saldo atual e: "+mc.getSaldo());
+        dispose();
+    }//GEN-LAST:event_jButtonSacarActionPerformed
 
     /**
      * @param args the command line arguments

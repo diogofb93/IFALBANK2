@@ -8,6 +8,7 @@ package br.com.Modelo;
 import br.com.DAO.UsuarioDAO;
 import br.com.util.exeptions.SaldoInsuficienteException;
 import br.com.util.exeptions.ValorInvalidoException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,15 +17,23 @@ import br.com.util.exeptions.ValorInvalidoException;
 public class ContaCorrente extends ModelSacarDepositar {
     private double novoSaldo;
     ModelConta mc = new ModelConta();
+    
     public void depositar(double valorDeposito) {
 		this.novoSaldo=mc.getSaldo()+ valorDeposito;
                 mc.setSaldo(this.novoSaldo);
 
 	}
 
-    @Override
-    public void sacar(double valorSaque) throws ValorInvalidoException, SaldoInsuficienteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void sacar(double valorSaque) throws SaldoInsuficienteException {
+		if(mc.getSaldo() > valorSaque) {
+                    
+			this.novoSaldo =mc.getSaldo()- valorSaque;
+                        mc.setSaldo(this.novoSaldo);
+                        JOptionPane.showMessageDialog(null, "Saque feito com sucesso!");
+		}
+		else {
+			throw new SaldoInsuficienteException("Saldo insuficiente");
+		}
+	}
     
 }

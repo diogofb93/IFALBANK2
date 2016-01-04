@@ -7,6 +7,7 @@ package br.com.Bo;
 
 import br.com.util.exeptions.ValorInvalidoException;
 import br.com.Modelo.ModelSacarDepositar;
+import br.com.util.exeptions.SaldoInsuficienteException;
 /**
  *
  * @author Diogo
@@ -22,4 +23,11 @@ public class ContaBO {
 		else
 			throw new ValorInvalidoException("Valor invalido!");
 	}   
+    public void validarSaque(double valorSaque) 
+			throws ValorInvalidoException, SaldoInsuficienteException {
+		if(valorSaque > 0)
+			msd.sacar(valorSaque);
+		else 
+			System.out.println("Valor invalido");
+	}
 }
