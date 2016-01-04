@@ -102,5 +102,14 @@ import java.util.logging.Logger;
             System.out.println("Erro "+ex.getMessage());
         }  
     }
+    public void updateConta(ModelConta mc) throws Exception{
+          this.conexao.conectar();
+          
+         PreparedStatement ps = this.conexao.con.prepareStatement("UPDATE cliente SET SALDO= ? WHERE ID_USUARIO = ?");
+          ps.setDouble(1, mc.getSaldo());
+          ps.setInt(2, mc.getN_usuario());
+          ps.executeUpdate();
+          conexao.desconectar();
+    }
 }
 

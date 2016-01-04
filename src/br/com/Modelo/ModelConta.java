@@ -9,11 +9,11 @@ package br.com.Modelo;
  *
  * @author Diogo
  */
-public class ModelConta {
+public  class ModelConta {
     private static String nome;
     private static String senha;
     private static String tipo;
-    private  double saldo;
+    private  static double saldo;
     private static String CPF;
     private static int n_usuario;
     private static int nova_conta;
@@ -22,8 +22,7 @@ public class ModelConta {
     /**
      * @return the saldo
      */
-
-
+    
 
   
 

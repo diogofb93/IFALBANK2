@@ -6,16 +6,20 @@
 package br.com.Bo;
 
 import br.com.util.exeptions.ValorInvalidoException;
-
+import br.com.Modelo.ModelSacarDepositar;
 /**
  *
  * @author Diogo
  */
 public class ContaBO {
+    private ModelSacarDepositar msd;
+    public ContaBO(ModelSacarDepositar msd) {
+		this.msd = msd;
+	}
     public void validarDeposito(double valorDeposito) throws ValorInvalidoException {
 		if (valorDeposito > 0)
-			conta.depositar(valorDeposito);
+			msd.depositar(valorDeposito);
 		else
 			throw new ValorInvalidoException("Valor invalido!");
-	}
+	}   
 }

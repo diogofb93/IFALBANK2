@@ -5,7 +5,15 @@
  */
 package br.com.View;
 
+import br.com.Bo.ContaBO;
+import br.com.DAO.UsuarioDAO;
+import br.com.Modelo.ContaCorrente;
 import br.com.Modelo.ModelConta;
+import br.com.Modelo.ModelSacarDepositar;
+import br.com.util.exeptions.ValorInvalidoException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,12 +21,16 @@ import br.com.Modelo.ModelConta;
  */
 public class ViewDepositar extends javax.swing.JFrame {
 
+    ContaBO contaBo;
+  ViewTelaPrincipal telaPrincipal = new ViewTelaPrincipal();
     /**
      * Creates new form ViewDepositar
      */
     
     public ViewDepositar() {
         initComponents();
+
+
     }
 
     /**
@@ -117,13 +129,34 @@ public class ViewDepositar extends javax.swing.JFrame {
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
         // TODO add your handling code here:
-       ViewTelaPrincipal telaPrincipal = new ViewTelaPrincipal();
+     
        telaPrincipal.setVisible(true);
        dispose();
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
+        ModelConta mc = new ModelConta();
+        ModelSacarDepositar msd;
+        UsuarioDAO usuarioDao = new UsuarioDAO();
+        if(mc.getTipo().equalsIgnoreCase("corrente")){
+            msd = new ContaCorrente();
+            this.contaBo= new ContaBO(msd);
+            Double deposito = Double.parseDouble(jTextFieldDeposito.getText());
+            try {
+                contaBo.validarDeposito(deposito);
+               usuarioDao.updateConta(mc);
+               JOptionPane.showMessageDialog(null, "Depositado com sucesso\n Novo saldo: "+mc.getSaldo());
+               
+               telaPrincipal.setVisible(true);
+               dispose();
+            } catch (ValorInvalidoException ex) {
+                JOptionPane.showMessageDialog(null, "erro");
+            } catch (Exception ex) {
+                Logger.getLogger(ViewDepositar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**

@@ -34,6 +34,7 @@ public class LoginBO {
             } else{
                 ViewTelaPrincipal telaPrincipal = new ViewTelaPrincipal();
                 telaPrincipal.setVisible(true);
+
                 
             }
 

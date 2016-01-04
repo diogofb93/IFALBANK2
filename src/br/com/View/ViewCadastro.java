@@ -219,7 +219,7 @@ public class ViewCadastro extends javax.swing.JFrame {
         try {
             usuarioDao.inserir(mc);
             usuarioDao.RetornaNumeroDaConta(mc);
-            JOptionPane.showMessageDialog(null, "o NUMERO DA CONTA E:"+mc.getNova_conta());
+            JOptionPane.showMessageDialog(null, "O NUMERO DA NOVA CONTA E:"+mc.getNova_conta());
         } catch(Exception e) {
             System.out.println(e.getMessage());
         }
