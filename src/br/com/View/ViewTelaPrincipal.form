@@ -60,25 +60,19 @@
               <Component id="jPanelinternal" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jButtonExtrato" max="32767" attributes="0"/>
-                      <Component id="jButtonDepositar" pref="132" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="jButtonSair" min="-2" pref="132" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="jButtonDepositar" min="-2" pref="132" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                           <Component id="jButtonSacar" min="-2" pref="153" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                          <Component id="jButtonTransferir" min="-2" pref="143" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jButtonPagar" min="-2" pref="132" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="-2" pref="400" max="-2" attributes="0"/>
-                          <Component id="jButtonSair" min="-2" pref="132" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="70" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="jButtonTransferir" min="-2" pref="143" max="-2" attributes="0"/>
+                  <EmptySpace pref="47" max="32767" attributes="0"/>
+                  <Component id="jButtonExtrato" min="-2" pref="134" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -86,19 +80,16 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jPanelinternal" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                  <EmptySpace min="68" pref="68" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButtonDepositar" alignment="3" min="-2" pref="61" max="-2" attributes="0"/>
                       <Component id="jButtonSacar" alignment="3" min="-2" pref="61" max="-2" attributes="0"/>
                       <Component id="jButtonTransferir" alignment="3" min="-2" pref="59" max="-2" attributes="0"/>
-                      <Component id="jButtonPagar" alignment="3" min="-2" pref="61" max="-2" attributes="0"/>
+                      <Component id="jButtonExtrato" alignment="3" min="-2" pref="61" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jButtonExtrato" pref="59" max="32767" attributes="0"/>
-                      <Component id="jButtonSair" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="24" pref="375" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="jButtonSair" min="-2" pref="59" max="-2" attributes="0"/>
+                  <EmptySpace pref="446" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -183,11 +174,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Transferir"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="jButtonPagar">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Pagar Boleto"/>
-          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonTransferirActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonSair">
           <Properties>

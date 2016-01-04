@@ -16,7 +16,7 @@ import com.sun.jna.Native;
 public class WinmmAbrir {
 	static int op=1;
 	public static void Abrir(){			
-		Winmm openClose = (Winmm) Native.loadLibrary("winmm.dll", Winmm.class);	
+		IWinmm openClose = (IWinmm) Native.loadLibrary("winmm.dll", IWinmm.class);	
 			do{
 								
 				switch(op){
