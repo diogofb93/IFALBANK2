@@ -9,12 +9,9 @@ package br.com.util.exeptions;
  *
  * @author Diogo
  */
+public class SaldoInsuficienteException extends Exception {
 
-   public class SaldoInsuficienteException extends Exception {
-
-	public SaldoInsuficienteException(String mensagemErro) {
-		super(mensagemErro);
-	}
+    public SaldoInsuficienteException(String mensagemErro) {
+        super(mensagemErro);
+    }
 }
- 
-

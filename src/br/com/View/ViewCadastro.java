@@ -18,14 +18,13 @@ import javax.swing.JOptionPane;
  * @author Diogo
  */
 public class ViewCadastro extends javax.swing.JFrame {
+
     ModelConta mc;
     UsuarioDAO usuarioDao;
-    
+
     /**
      * Creates new form ViewCadastro
      */
-    
-
     public ViewCadastro() {
         initComponents();
         usuarioDao = new UsuarioDAO();
@@ -209,18 +208,18 @@ public class ViewCadastro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-       Double saldo = Double.parseDouble(jTextFieldSaldoInicial.getText());
+        Double saldo = Double.parseDouble(jTextFieldSaldoInicial.getText());
         mc.setNome(jTextFieldNome.getText());
         mc.setSenha(jTextFieldSenha.getText());
         mc.setTipo(jTextFieldTipoDaConta.getText());
         mc.setSaldo(saldo);
         mc.setCPF(jTextFieldCPF.getText());
-        
+
         try {
             usuarioDao.inserir(mc);
             usuarioDao.RetornaNumeroDaConta(mc);
-            JOptionPane.showMessageDialog(null, "O NUMERO DA NOVA CONTA E:"+mc.getNova_conta());
-        } catch(Exception e) {
+            JOptionPane.showMessageDialog(null, "O NUMERO DA NOVA CONTA E:" + mc.getNova_conta());
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         ViewTelaPrincipalGerente telaGerente = new ViewTelaPrincipalGerente();

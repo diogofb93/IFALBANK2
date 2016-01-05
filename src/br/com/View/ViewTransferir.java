@@ -5,15 +5,25 @@
  */
 package br.com.View;
 
+import br.com.Bo.ContaBO;
 import br.com.DAO.UsuarioDAO;
+import br.com.Modelo.ContaCorrente;
+import br.com.Modelo.ContaPoupanca;
 import br.com.Modelo.ModelConta;
+import br.com.Modelo.ModelSacarDepositar;
+import br.com.util.exeptions.ValorInvalidoException;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Diogo
  */
 public class ViewTransferir extends javax.swing.JFrame {
-    ModelConta mc= new ModelConta();
+
+    ModelConta mc = new ModelConta();
+    ContaBO contaBo;
+    ViewTelaPrincipal telaPrincipal = new ViewTelaPrincipal();
+
     /**
      * Creates new form ViewTransferir
      */
@@ -74,6 +84,12 @@ public class ViewTransferir extends javax.swing.JFrame {
 
         jLabel3.setText("Nome do dono :");
 
+        jTextFieldNomeDoDono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNomeDoDonoActionPerformed(evt);
+            }
+        });
+
         jButton1.setText("Procurar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,7 +99,18 @@ public class ViewTransferir extends javax.swing.JFrame {
 
         jLabel4.setText("Digite o Valor para transferir :");
 
+        jTextFieldValorTransferir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldValorTransferirActionPerformed(evt);
+            }
+        });
+
         jButtonTransferir.setText("Transferir");
+        jButtonTransferir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTransferirActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Voltar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -150,27 +177,80 @@ public class ViewTransferir extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pack();
+        setSize(new java.awt.Dimension(559, 338));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         ViewTelaPrincipal telaPrincipal = new ViewTelaPrincipal();
         telaPrincipal.setVisible(true);
-        dispose();                
+        dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         mc.setBusca_usuario(Integer.parseInt(jTextFieldContaTransferir.getText()));
-       ModelConta mod= new ModelConta();
-               
-       UsuarioDAO usuarioDao= new UsuarioDAO();
+        ModelConta mod = new ModelConta();
+
+        UsuarioDAO usuarioDao = new UsuarioDAO();
         try {
             usuarioDao.buscar(mc);
             jTextFieldNomeDoDono.setText(mc.getNomeBusca());
         } catch (Exception ex) {
-           System.out.println("Erro"+ex.getMessage());
+            System.out.println("Erro" + ex.getMessage());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButtonTransferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTransferirActionPerformed
+        // TODO add your handling code here:
+         ModelConta mc = new ModelConta();
+        ModelSacarDepositar msd;
+        UsuarioDAO usuarioDao = new UsuarioDAO();
+        
+        if (mc.getTipo().equalsIgnoreCase("corrente")) {
+            msd = new ContaCorrente();
+            this.contaBo = new ContaBO(msd);
+            Double transferir = Double.parseDouble(jTextFieldValorTransferir.getText());
+            mc.setValorTransfere(transferir);
+            try {
+                contaBo.validarTransferir(transferir);
+                usuarioDao.transferir(mc);
+                JOptionPane.showMessageDialog(null, "Transferido com sucesso\n Novo saldo: " + mc.getSaldo());
+                telaPrincipal.setVisible(true);
+                dispose();
+            } catch (ValorInvalidoException ex) {
+                JOptionPane.showMessageDialog(null, "Erro" + ex.getMessage());
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Erro" + ex.getMessage());
+            }
+
+        } else if (mc.getTipo().equalsIgnoreCase("poupanca")) {
+            msd = new ContaPoupanca();
+            this.contaBo = new ContaBO(msd);
+            Double transferir = Double.parseDouble(jTextFieldValorTransferir.getText());
+            try {
+                contaBo.validarTransferir(transferir);
+                usuarioDao.transferir(mc);
+                JOptionPane.showMessageDialog(null, "Transferido com sucesso\n Novo saldo: " + mc.getSaldo());
+
+                telaPrincipal.setVisible(true);
+                dispose();
+            } catch (ValorInvalidoException ex) {
+                JOptionPane.showMessageDialog(null, "Erro" + ex.getMessage());
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Erro" + ex.getMessage());
+            }
+        
+        }   
+    }//GEN-LAST:event_jButtonTransferirActionPerformed
+
+    private void jTextFieldNomeDoDonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeDoDonoActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jTextFieldNomeDoDonoActionPerformed
+
+    private void jTextFieldValorTransferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldValorTransferirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldValorTransferirActionPerformed
 
     /**
      * @param args the command line arguments

@@ -15,7 +15,9 @@ import java.util.logging.Logger;
  * @author Diogo
  */
 public class ViewBusca extends javax.swing.JFrame {
-    ModelConta mc= new ModelConta();
+
+    ModelConta mc = new ModelConta();
+
     /**
      * Creates new form ViewBusca
      */
@@ -208,10 +210,10 @@ public class ViewBusca extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
-       mc.setBusca_usuario(Integer.parseInt(jTextFieldBusca.getText()));
-       ModelConta mod= new ModelConta();
-               
-       UsuarioDAO usuarioDao= new UsuarioDAO();
+        mc.setBusca_usuario(Integer.parseInt(jTextFieldBusca.getText()));
+        ModelConta mod = new ModelConta();
+
+        UsuarioDAO usuarioDao = new UsuarioDAO();
         try {
             usuarioDao.buscar(mc);
             jTextFieldId.setText(String.valueOf(mc.getBusca_usuario()));
@@ -220,9 +222,9 @@ public class ViewBusca extends javax.swing.JFrame {
             jTextFieldTipo.setText(mc.getTipoBusca());
             jTextFieldCPF.setText(mc.getCPFBusca());
         } catch (Exception ex) {
-           System.out.println("Erro"+ex.getMessage());
+            System.out.println("Erro" + ex.getMessage());
         }
-       
+
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     private void jTextFieldIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdActionPerformed
@@ -234,10 +236,10 @@ public class ViewBusca extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldNomeActionPerformed
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
-            ViewTelaPrincipalGerente tela = new ViewTelaPrincipalGerente();
-            tela.setVisible(true);
-            dispose();
-        
+        ViewTelaPrincipalGerente tela = new ViewTelaPrincipalGerente();
+        tela.setVisible(true);
+        dispose();
+
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     private void jTextFieldBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldBuscaActionPerformed

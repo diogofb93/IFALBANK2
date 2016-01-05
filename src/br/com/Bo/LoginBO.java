@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package br.com.Bo;
+
 import br.com.View.*;
 import br.com.DAO.Conexao;
 import br.com.DAO.UsuarioDAO;
@@ -19,27 +20,27 @@ import javax.swing.JOptionPane;
  * @author Diogo
  */
 public class LoginBO {
+
     Conexao conexao;
-    public LoginBO(){
+
+    public LoginBO() {
         this.conexao = new Conexao();
     }
+
     //VALIDAR
-     public void validarLogin(String nUsuario, String senhaUsuario) throws SQLException {
-         ModelConta mc= new ModelConta();
-         UsuarioDAO usuarioDao = new UsuarioDAO();
+    public void validarLogin(String nUsuario, String senhaUsuario) throws SQLException {
+        ModelConta mc = new ModelConta();
+        UsuarioDAO usuarioDao = new UsuarioDAO();
         if (usuarioDao.isLoginValido(nUsuario, senhaUsuario) == true) {
-            if(mc.getTipo().equalsIgnoreCase("gerente")){
+            if (mc.getTipo().equalsIgnoreCase("gerente")) {
                 ViewTelaPrincipalGerente telaGerente = new ViewTelaPrincipalGerente();
                 telaGerente.setVisible(true);
-            } else{
+            } else {
                 ViewTelaPrincipal telaPrincipal = new ViewTelaPrincipal();
                 telaPrincipal.setVisible(true);
 
-                
             }
 
-            }
-     }
+        }
+    }
 }
-
-

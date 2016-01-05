@@ -23,14 +23,14 @@ import javax.swing.JOptionPane;
 public class ViewDepositar extends javax.swing.JFrame {
 
     ContaBO contaBo;
-  ViewTelaPrincipal telaPrincipal = new ViewTelaPrincipal();
+    ViewTelaPrincipal telaPrincipal = new ViewTelaPrincipal();
+
     /**
      * Creates new form ViewDepositar
      */
-    
+
     public ViewDepositar() {
         initComponents();
-
 
     }
 
@@ -83,6 +83,12 @@ public class ViewDepositar extends javax.swing.JFrame {
 
         jLabel2.setText("Valor:");
 
+        jTextFieldDeposito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldDepositoActionPerformed(evt);
+            }
+        });
+
         jButtonVoltar.setText("Voltar");
         jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,52 +136,56 @@ public class ViewDepositar extends javax.swing.JFrame {
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
         // TODO add your handling code here:
-     
-       telaPrincipal.setVisible(true);
-       dispose();
+
+        telaPrincipal.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         ModelConta mc = new ModelConta();
         ModelSacarDepositar msd;
         UsuarioDAO usuarioDao = new UsuarioDAO();
-        if(mc.getTipo().equalsIgnoreCase("corrente")){
+        if (mc.getTipo().equalsIgnoreCase("corrente")) {
             msd = new ContaCorrente();
-            this.contaBo= new ContaBO(msd);
+            this.contaBo = new ContaBO(msd);
             Double deposito = Double.parseDouble(jTextFieldDeposito.getText());
             try {
                 contaBo.validarDeposito(deposito);
-               usuarioDao.updateConta(mc);
-               JOptionPane.showMessageDialog(null, "Depositado com sucesso\n Novo saldo: "+mc.getSaldo());
-               
-               telaPrincipal.setVisible(true);
-               dispose();
+                usuarioDao.updateConta(mc);
+                JOptionPane.showMessageDialog(null, "Depositado com sucesso\n Novo saldo: " + mc.getSaldo());
+
+                telaPrincipal.setVisible(true);
+                dispose();
             } catch (ValorInvalidoException ex) {
-                JOptionPane.showMessageDialog(null, "Erro"+ex.getMessage());
+                JOptionPane.showMessageDialog(null, "Erro" + ex.getMessage());
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "Erro"+ex.getMessage());
+                JOptionPane.showMessageDialog(null, "Erro" + ex.getMessage());
             }
-            
-        }else if(mc.getTipo().equalsIgnoreCase("poupanca")){
+
+        } else if (mc.getTipo().equalsIgnoreCase("poupanca")) {
             msd = new ContaPoupanca();
-            this.contaBo= new ContaBO(msd);
+            this.contaBo = new ContaBO(msd);
             Double deposito = Double.parseDouble(jTextFieldDeposito.getText());
             try {
                 contaBo.validarDeposito(deposito);
-               usuarioDao.updateConta(mc);
-               JOptionPane.showMessageDialog(null, "Depositado com sucesso\n Novo saldo: "+mc.getSaldo());
-               
-               telaPrincipal.setVisible(true);
-               dispose();
+                usuarioDao.updateConta(mc);
+                JOptionPane.showMessageDialog(null, "Depositado com sucesso\n Novo saldo: " + mc.getSaldo());
+
+                telaPrincipal.setVisible(true);
+                dispose();
             } catch (ValorInvalidoException ex) {
-                JOptionPane.showMessageDialog(null, "Erro"+ex.getMessage());
+                JOptionPane.showMessageDialog(null, "Erro" + ex.getMessage());
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "Erro"+ex.getMessage());
+                JOptionPane.showMessageDialog(null, "Erro" + ex.getMessage());
             }
-            
+
         }
-        
+
     }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void jTextFieldDepositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDepositoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldDepositoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,7 +213,7 @@ public class ViewDepositar extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ViewDepositar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-       
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

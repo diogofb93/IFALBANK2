@@ -8,26 +8,40 @@ package br.com.Bo;
 import br.com.util.exeptions.ValorInvalidoException;
 import br.com.Modelo.ModelSacarDepositar;
 import br.com.util.exeptions.SaldoInsuficienteException;
+
 /**
  *
  * @author Diogo
  */
 public class ContaBO {
+
     private ModelSacarDepositar msd;
+
     public ContaBO(ModelSacarDepositar msd) {
-		this.msd = msd;
-	}
+        this.msd = msd;
+    }
+
     public void validarDeposito(double valorDeposito) throws ValorInvalidoException {
-		if (valorDeposito > 0)
-			msd.depositar(valorDeposito);
-		else
-			throw new ValorInvalidoException("Valor invalido!");
-	}   
-    public void validarSaque(double valorSaque) 
-			throws ValorInvalidoException, SaldoInsuficienteException {
-		if(valorSaque > 0)
-			msd.sacar(valorSaque);
-		else 
-			System.out.println("Valor invalido");
-	}
+        if (valorDeposito > 0) {
+            msd.depositar(valorDeposito);
+        } else {
+            throw new ValorInvalidoException("Valor invalido!");
+        }
+    }
+
+    public void validarSaque(double valorSaque)
+            throws ValorInvalidoException, SaldoInsuficienteException {
+        if (valorSaque > 0) {
+            msd.sacar(valorSaque);
+        } else {
+            System.out.println("Valor invalido");
+        }
+    }
+     public void validarTransferir(double valorTransferir) throws ValorInvalidoException {
+        if (valorTransferir > 0) {
+            msd.transferir(valorTransferir);
+        } else {
+            throw new ValorInvalidoException("Valor invalido!");
+        }
+    }
 }

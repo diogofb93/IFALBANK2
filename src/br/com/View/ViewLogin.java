@@ -17,9 +17,9 @@ import javax.swing.JOptionPane;
  * @author Diogo
  */
 public class ViewLogin extends javax.swing.JFrame {
- Conexao conexao= new Conexao();
 
- 
+    Conexao conexao = new Conexao();
+
     /**
      * Creates new form ViewLogin
      */
@@ -147,21 +147,21 @@ public class ViewLogin extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(416, 338));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    
+
     private void jButtonLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogarActionPerformed
         LoginBO login = new LoginBO();
-          String senha = new String(jPasswordFieldSenha.getPassword());
-     try {
-         login.validarLogin(jTextFieldLogin.getText(), senha);
-     } catch (SQLException ex) {
-         System.out.println(getName());
-         System.out.println("erro"+ex.getMessage());
-     }
+        String senha = new String(jPasswordFieldSenha.getPassword());
+        try {
+            login.validarLogin(jTextFieldLogin.getText(), senha);
+        } catch (SQLException ex) {
+            System.out.println(getName());
+            System.out.println("erro" + ex.getMessage());
+        }
     }//GEN-LAST:event_jButtonLogarActionPerformed
-    
+
     private void jButtonFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFecharActionPerformed
         System.exit(0);
-        
+
     }//GEN-LAST:event_jButtonFecharActionPerformed
 
     private void jTextFieldLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldLoginActionPerformed
@@ -201,7 +201,7 @@ public class ViewLogin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+
                 new ViewLogin().setVisible(true);
             }
         });

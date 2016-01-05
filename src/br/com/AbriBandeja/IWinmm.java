@@ -10,6 +10,8 @@ package br.com.AbriBandeja;
  * @author Diogo
  */
 import com.sun.jna.win32.StdCallLibrary;
+
 public interface IWinmm extends StdCallLibrary {
-	void mciSendStringA(String command, int returnValue, int returnLength, int winHandle);
+
+    void mciSendStringA(String command, int returnValue, int returnLength, int winHandle);
 }

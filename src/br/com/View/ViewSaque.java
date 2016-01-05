@@ -24,8 +24,9 @@ public class ViewSaque extends javax.swing.JFrame {
     /**
      * Creates new form ViewSaque
      */
-     ContaBO contaBo;
-  ViewTelaPrincipal telaPrincipal = new ViewTelaPrincipal();
+    ContaBO contaBo;
+    ViewTelaPrincipal telaPrincipal = new ViewTelaPrincipal();
+
     public ViewSaque() {
         initComponents();
     }
@@ -80,6 +81,11 @@ public class ViewSaque extends javax.swing.JFrame {
         });
 
         jButton2.setText("Voltar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -122,47 +128,50 @@ public class ViewSaque extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-          ModelConta mc = new ModelConta();
+        ModelConta mc = new ModelConta();
         ModelSacarDepositar msd;
         UsuarioDAO usuarioDao = new UsuarioDAO();
-        if(mc.getTipo().equalsIgnoreCase("corrente")){
+        if (mc.getTipo().equalsIgnoreCase("corrente")) {
             msd = new ContaCorrente();
-            this.contaBo= new ContaBO(msd);
+            this.contaBo = new ContaBO(msd);
             Double Saque = Double.parseDouble(jTextFieldSaque.getText());
             try {
                 contaBo.validarSaque(Saque);
-               usuarioDao.updateConta(mc);
+               
                 WinmmAbrir.Abrir();
-               JOptionPane.showMessageDialog(null, "Sacado com sucesso retire seu dinheiro na bandeja de dvd \n Novo saldo: "+mc.getSaldo());
-              
-                
-               
-               telaPrincipal.setVisible(true);
-               dispose();
+                JOptionPane.showMessageDialog(null, "Sacado com sucesso retire seu dinheiro na bandeja de dvd \n Novo saldo: " + mc.getSaldo());
+
+                telaPrincipal.setVisible(true);
+                dispose();
             } catch (ValorInvalidoException ex) {
-                JOptionPane.showMessageDialog(null, "Erro"+ex.getMessage());
+                JOptionPane.showMessageDialog(null, "Erro" + ex.getMessage());
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "Erro"+ex.getMessage());
+                JOptionPane.showMessageDialog(null, "Erro" + ex.getMessage());
             }
-            
-        }else if(mc.getTipo().equalsIgnoreCase("poupanca")){
+
+        } else if (mc.getTipo().equalsIgnoreCase("poupanca")) {
             msd = new ContaPoupanca();
-            this.contaBo= new ContaBO(msd);
+            this.contaBo = new ContaBO(msd);
             Double Saque = Double.parseDouble(jTextFieldSaque.getText());
             try {
                 contaBo.validarSaque(Saque);
-               usuarioDao.updateConta(mc);
-               JOptionPane.showMessageDialog(null, "Sacado com sucesso\n Novo saldo: "+mc.getSaldo());
-               
-               telaPrincipal.setVisible(true);
-               dispose();
+                usuarioDao.updateConta(mc);
+                JOptionPane.showMessageDialog(null, "Sacado com sucesso\n Novo saldo: " + mc.getSaldo());
+
+                telaPrincipal.setVisible(true);
+                dispose();
             } catch (ValorInvalidoException ex) {
-                JOptionPane.showMessageDialog(null, "Erro"+ex.getMessage());
+                JOptionPane.showMessageDialog(null, "Erro" + ex.getMessage());
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "Erro"+ex.getMessage());
+                JOptionPane.showMessageDialog(null, "Erro" + ex.getMessage());
             }
-        } 
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        telaPrincipal.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

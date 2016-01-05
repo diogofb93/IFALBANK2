@@ -177,16 +177,16 @@ public class ViewTelaPrincipal extends javax.swing.JFrame {
         ViewDepositar telaDepositar = new ViewDepositar();
         telaDepositar.setVisible(true);
         ModelConta mc = new ModelConta();
-        JOptionPane.showMessageDialog(null, "seu saldo atual e: "+mc.getSaldo());
+        JOptionPane.showMessageDialog(null, "seu saldo atual e: " + mc.getSaldo());
         dispose();
     }//GEN-LAST:event_jButtonDepositarActionPerformed
 
     private void jButtonSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSacarActionPerformed
-            // TODO add your handling code here:
-            ViewSaque telaSaque = new ViewSaque();                    
+        // TODO add your handling code here:
+        ViewSaque telaSaque = new ViewSaque();
         telaSaque.setVisible(true);
         ModelConta mc = new ModelConta();
-        JOptionPane.showMessageDialog(null, "seu saldo atual e: "+mc.getSaldo());
+        JOptionPane.showMessageDialog(null, "seu saldo atual e: " + mc.getSaldo());
         dispose();
     }//GEN-LAST:event_jButtonSacarActionPerformed
 

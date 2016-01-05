@@ -9,28 +9,24 @@ package br.com.Modelo;
  *
  * @author Diogo
  */
-public  class ModelConta {
+public class ModelConta {
+
     private static String nome;
     private static String senha;
     private static String tipo;
-    private  static double saldo;
+    private static double saldo;
     private static String CPF;
     private static int n_usuario;
     private static int nova_conta;
     private static int busca_usuario;
-    private String nomeBusca;
-    private String tipoBusca;
-    private Double SaldoBusca;
-    private String CPFBusca;
-    
-
+    private static String nomeBusca;
+    private static String tipoBusca;
+    private static Double SaldoBusca;
+    private static String CPFBusca;
+    private static  Double ValorTransfere;
     /**
      * @return the saldo
      */
-    
-
-  
-
     /**
      * @return the nome
      */
@@ -76,9 +72,6 @@ public  class ModelConta {
     /**
      * @return the saldo
      */
-
-
-
     /**
      * @return the busca_usuario
      */
@@ -206,7 +199,20 @@ public  class ModelConta {
     }
 
     /**
+     * @return the ValorTransfere
+     */
+    public Double getValorTransfere() {
+        return ValorTransfere;
+    }
+
+    /**
+     * @param ValorTransfere the ValorTransfere to set
+     */
+    public void setValorTransfere(Double ValorTransfere) {
+        this.ValorTransfere = ValorTransfere;
+    }
+
+    /**
      * @return the n_usuario
      */
- 
 }

@@ -10,7 +10,8 @@ package br.com.util.exeptions;
  * @author Diogo
  */
 public class ValorInvalidoException extends Exception {
-    	public ValorInvalidoException(String mensagemErro) {
-		super(mensagemErro);
-	}
+
+    public ValorInvalidoException(String mensagemErro) {
+        super(mensagemErro);
+    }
 }
