@@ -211,6 +211,7 @@ public class ViewTransferir extends javax.swing.JFrame {
             this.contaBo = new ContaBO(msd);
             Double transferir = Double.parseDouble(jTextFieldValorTransferir.getText());
             mc.setValorTransfere(transferir);
+            System.out.println(mc.getValorTransfere());
             try {
                 contaBo.validarTransferir(transferir);
                 usuarioDao.transferir(mc);

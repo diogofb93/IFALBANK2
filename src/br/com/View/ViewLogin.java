@@ -157,6 +157,7 @@ public class ViewLogin extends javax.swing.JFrame {
             System.out.println(getName());
             System.out.println("erro" + ex.getMessage());
         }
+        dispose();
     }//GEN-LAST:event_jButtonLogarActionPerformed
 
     private void jButtonFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFecharActionPerformed

@@ -118,23 +118,23 @@ public class UsuarioDAO {
         this.conexao.conectar();
         Double SaldoContaTransfere;
         //diminui
-        try{
-            SaldoContaTransfere= mc.getSaldoBusca()+mc.getValorTransfere();
+        try {
+            SaldoContaTransfere = mc.getSaldoBusca() + mc.getValorTransfere();
             PreparedStatement ps = this.conexao.con.prepareStatement("UPDATE cliente SET SALDO= ? WHERE ID_USUARIO = ?");
-        
-        ps.setDouble(1, mc.getSaldo());
-        ps.setInt(2, mc.getN_usuario());
-        ps.executeUpdate();
-        this.conexao.desconectar();
-        //transfere
-        this.conexao.conectar();
-         PreparedStatement prepare = this.conexao.con.prepareStatement("UPDATE cliente SET SALDO= ? WHERE ID_USUARIO = ?");
-         
-        prepare.setDouble(1, SaldoContaTransfere);
-        prepare.setInt(2, mc.getBusca_usuario());
-        prepare.executeUpdate();
-        }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null,"Erro"+ex.getMessage() );
+
+            ps.setDouble(1, mc.getSaldo());
+            ps.setInt(2, mc.getN_usuario());
+            ps.executeUpdate();
+            this.conexao.desconectar();
+            //transfere
+            this.conexao.conectar();
+            PreparedStatement prepare = this.conexao.con.prepareStatement("UPDATE cliente SET SALDO= ? WHERE ID_USUARIO = ?");
+
+            prepare.setDouble(1, SaldoContaTransfere);
+            prepare.setInt(2, mc.getBusca_usuario());
+            prepare.executeUpdate();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro" + ex.getMessage());
         }
         this.conexao.desconectar();
     }
