@@ -5,7 +5,10 @@
  */
 package br.com.Modelo;
 
+import br.com.DAO.UsuarioDAO;
 import br.com.util.exeptions.SaldoInsuficienteException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,6 +19,7 @@ public class ContaPoupanca extends ModelSacarDepositar {
 
     private double novoSaldo;
     ModelConta mc = new ModelConta();
+    UsuarioDAO usuarioDao = new UsuarioDAO();
 
     public void depositar(double valorDeposito) {
         this.novoSaldo = mc.getSaldo() + (valorDeposito * 1.5);
@@ -25,22 +29,31 @@ public class ContaPoupanca extends ModelSacarDepositar {
 
     public void sacar(double valorSaque) throws SaldoInsuficienteException {
         if (mc.getSaldo() >= valorSaque) {
-
-            this.novoSaldo = mc.getSaldo() - valorSaque;
-            mc.setSaldo(this.novoSaldo);
+            try {
+                this.novoSaldo = mc.getSaldo() - valorSaque;
+                mc.setSaldo(this.novoSaldo);
+                usuarioDao.updateConta(mc);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Erro "+ ex.getMessage());
+            }
             JOptionPane.showMessageDialog(null, "Saque feito com sucesso!");
         } else {
             JOptionPane.showMessageDialog(null, "Saldo insuficiente");
         }
     }
 
-  
     public void transferir(double valorTranferir) {
-       if (mc.getSaldo()>= valorTranferir){
-            this.novoSaldo= mc.getSaldo()- valorTranferir;
-            mc.setSaldo(this.novoSaldo);
-        }else {
-           JOptionPane.showMessageDialog(null, "Saldo insuficiente");
-       }
+        if (mc.getSaldo() >= valorTranferir) {
+            try {
+                this.novoSaldo = mc.getSaldo() - valorTranferir;
+                mc.setSaldo(this.novoSaldo);
+
+                usuarioDao.updateConta(mc);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Erro "+ ex.getMessage());
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Saldo insuficiente");
+        }
     }
 }

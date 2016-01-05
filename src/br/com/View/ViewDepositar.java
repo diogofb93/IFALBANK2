@@ -151,7 +151,6 @@ public class ViewDepositar extends javax.swing.JFrame {
             Double deposito = Double.parseDouble(jTextFieldDeposito.getText());
             try {
                 contaBo.validarDeposito(deposito);
-                usuarioDao.updateConta(mc);
                 JOptionPane.showMessageDialog(null, "Depositado com sucesso\n Novo saldo: " + mc.getSaldo());
 
                 telaPrincipal.setVisible(true);
@@ -168,9 +167,8 @@ public class ViewDepositar extends javax.swing.JFrame {
             Double deposito = Double.parseDouble(jTextFieldDeposito.getText());
             try {
                 contaBo.validarDeposito(deposito);
-                usuarioDao.updateConta(mc);
+                
                 JOptionPane.showMessageDialog(null, "Depositado com sucesso\n Novo saldo: " + mc.getSaldo());
-
                 telaPrincipal.setVisible(true);
                 dispose();
             } catch (ValorInvalidoException ex) {
