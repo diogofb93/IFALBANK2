@@ -5,6 +5,7 @@
  */
 package br.com.Modelo;
 
+import br.com.AbriBandeja.WinmmAbrir;
 import br.com.DAO.UsuarioDAO;
 import br.com.util.exeptions.SaldoInsuficienteException;
 import java.util.logging.Level;
@@ -24,7 +25,7 @@ public class ContaPoupanca extends ModelSacarDepositar {
     public void depositar(double valorDeposito) {
         this.novoSaldo = mc.getSaldo() + (valorDeposito * 1.5);
         mc.setSaldo(this.novoSaldo);
-
+        JOptionPane.showMessageDialog(null, "Deposito feito com sucesso!");
     }
 
     public void sacar(double valorSaque) throws SaldoInsuficienteException {
@@ -33,10 +34,11 @@ public class ContaPoupanca extends ModelSacarDepositar {
                 this.novoSaldo = mc.getSaldo() - valorSaque;
                 mc.setSaldo(this.novoSaldo);
                 usuarioDao.updateConta(mc);
+                WinmmAbrir.Abrir();
+                JOptionPane.showMessageDialog(null, "Sacado com sucesso retire seu dinheiro na bandeja de dvd \n Novo saldo: " + mc.getSaldo());
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Erro "+ ex.getMessage());
-            }
-            JOptionPane.showMessageDialog(null, "Saque feito com sucesso!");
+            } 
         } else {
             JOptionPane.showMessageDialog(null, "Saldo insuficiente");
         }
@@ -48,6 +50,7 @@ public class ContaPoupanca extends ModelSacarDepositar {
                 this.novoSaldo = mc.getSaldo() - valorTranferir;
                 mc.setSaldo(this.novoSaldo);
                usuarioDao.transferir(mc);
+               JOptionPane.showMessageDialog(null, "Transferido com sucesso\n Novo saldo: " + mc.getSaldo());
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Erro "+ ex.getMessage());
             }

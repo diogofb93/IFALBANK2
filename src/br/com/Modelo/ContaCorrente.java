@@ -5,6 +5,7 @@
  */
 package br.com.Modelo;
 
+import br.com.AbriBandeja.WinmmAbrir;
 import br.com.DAO.UsuarioDAO;
 import br.com.util.exeptions.SaldoInsuficienteException;
 import br.com.util.exeptions.ValorInvalidoException;
@@ -26,7 +27,7 @@ public class ContaCorrente extends ModelSacarDepositar {
         try {
             this.novoSaldo = mc.getSaldo() + valorDeposito;
             mc.setSaldo(this.novoSaldo);
-
+            JOptionPane.showMessageDialog(null, "Depositado com sucesso\n Novo saldo: " + mc.getSaldo());
             usuarioDao.updateConta(mc);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Erro" + ex.getMessage());
@@ -40,9 +41,13 @@ public class ContaCorrente extends ModelSacarDepositar {
                 this.novoSaldo = mc.getSaldo() - valorSaque;
                 mc.setSaldo(this.novoSaldo);
                 usuarioDao.updateConta(mc);
+              WinmmAbrir.Abrir();
+                JOptionPane.showMessageDialog(null, "Sacado com sucesso retire seu dinheiro na bandeja de dvd \n Novo saldo: " + mc.getSaldo());
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Erro" + ex.getMessage());
             }
+        }else {
+            JOptionPane.showMessageDialog(null, "Saldo insuficiente");
         }
     }
 
@@ -52,6 +57,7 @@ public class ContaCorrente extends ModelSacarDepositar {
                 this.novoSaldo = mc.getSaldo() - valorTranferir;
                 mc.setSaldo(this.novoSaldo);
                 usuarioDao.transferir(mc);
+                JOptionPane.showMessageDialog(null, "Transferido com sucesso\n Novo saldo: " + mc.getSaldo());
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Erro "+ ex.getMessage());
             }

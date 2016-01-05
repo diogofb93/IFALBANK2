@@ -137,10 +137,6 @@ public class ViewSaque extends javax.swing.JFrame {
             Double Saque = Double.parseDouble(jTextFieldSaque.getText());
             try {
                 contaBo.validarSaque(Saque);
-               
-                WinmmAbrir.Abrir();
-                JOptionPane.showMessageDialog(null, "Sacado com sucesso retire seu dinheiro na bandeja de dvd \n Novo saldo: " + mc.getSaldo());
-
                 telaPrincipal.setVisible(true);
                 dispose();
             } catch (ValorInvalidoException ex) {
@@ -155,9 +151,6 @@ public class ViewSaque extends javax.swing.JFrame {
             Double Saque = Double.parseDouble(jTextFieldSaque.getText());
             try {
                 contaBo.validarSaque(Saque);
-                usuarioDao.updateConta(mc);
-                JOptionPane.showMessageDialog(null, "Sacado com sucesso\n Novo saldo: " + mc.getSaldo());
-
                 telaPrincipal.setVisible(true);
                 dispose();
             } catch (ValorInvalidoException ex) {

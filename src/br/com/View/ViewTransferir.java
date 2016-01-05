@@ -214,7 +214,6 @@ public class ViewTransferir extends javax.swing.JFrame {
             try {
                 contaBo.validarTransferir(transferir);
                 
-                JOptionPane.showMessageDialog(null, "Transferido com sucesso\n Novo saldo: " + mc.getSaldo());
                 telaPrincipal.setVisible(true);
                 dispose();
             } catch (ValorInvalidoException ex) {
@@ -228,7 +227,7 @@ public class ViewTransferir extends javax.swing.JFrame {
             this.contaBo = new ContaBO(msd);
             try {
                 contaBo.validarTransferir(transferir);
-                JOptionPane.showMessageDialog(null, "Transferido com sucesso\n Novo saldo: " + mc.getSaldo());
+                
                 telaPrincipal.setVisible(true);
                 dispose();
             } catch (ValorInvalidoException ex) {
