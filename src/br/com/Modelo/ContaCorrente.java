@@ -39,7 +39,6 @@ public class ContaCorrente extends ModelSacarDepositar {
             try {
                 this.novoSaldo = mc.getSaldo() - valorSaque;
                 mc.setSaldo(this.novoSaldo);
-
                 usuarioDao.updateConta(mc);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Erro" + ex.getMessage());
@@ -49,8 +48,13 @@ public class ContaCorrente extends ModelSacarDepositar {
 
     public void transferir(double valorTranferir) {
         if (mc.getSaldo() >= valorTranferir) {
-            this.novoSaldo = mc.getSaldo() - valorTranferir;
-            mc.setSaldo(this.novoSaldo);
+            try {
+                this.novoSaldo = mc.getSaldo() - valorTranferir;
+                mc.setSaldo(this.novoSaldo);
+                usuarioDao.transferir(mc);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Erro "+ ex.getMessage());
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Saldo insuficiente");
         }

@@ -47,8 +47,7 @@ public class ContaPoupanca extends ModelSacarDepositar {
             try {
                 this.novoSaldo = mc.getSaldo() - valorTranferir;
                 mc.setSaldo(this.novoSaldo);
-
-                usuarioDao.updateConta(mc);
+               usuarioDao.transferir(mc);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Erro "+ ex.getMessage());
             }

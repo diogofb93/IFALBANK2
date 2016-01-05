@@ -205,16 +205,15 @@ public class ViewTransferir extends javax.swing.JFrame {
          ModelConta mc = new ModelConta();
         ModelSacarDepositar msd;
         UsuarioDAO usuarioDao = new UsuarioDAO();
-        
+         Double transferir = Double.parseDouble(jTextFieldValorTransferir.getText());
+         mc.setValorTransfere(transferir);
         if (mc.getTipo().equalsIgnoreCase("corrente")) {
             msd = new ContaCorrente();
             this.contaBo = new ContaBO(msd);
-            Double transferir = Double.parseDouble(jTextFieldValorTransferir.getText());
-            mc.setValorTransfere(transferir);
-            System.out.println(mc.getValorTransfere());
+           
             try {
                 contaBo.validarTransferir(transferir);
-                usuarioDao.transferir(mc);
+                
                 JOptionPane.showMessageDialog(null, "Transferido com sucesso\n Novo saldo: " + mc.getSaldo());
                 telaPrincipal.setVisible(true);
                 dispose();
@@ -227,12 +226,9 @@ public class ViewTransferir extends javax.swing.JFrame {
         } else if (mc.getTipo().equalsIgnoreCase("poupanca")) {
             msd = new ContaPoupanca();
             this.contaBo = new ContaBO(msd);
-            Double transferir = Double.parseDouble(jTextFieldValorTransferir.getText());
             try {
                 contaBo.validarTransferir(transferir);
-                usuarioDao.transferir(mc);
                 JOptionPane.showMessageDialog(null, "Transferido com sucesso\n Novo saldo: " + mc.getSaldo());
-
                 telaPrincipal.setVisible(true);
                 dispose();
             } catch (ValorInvalidoException ex) {
