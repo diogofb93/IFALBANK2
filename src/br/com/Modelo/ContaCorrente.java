@@ -26,9 +26,12 @@ public class ContaCorrente extends ModelSacarDepositar {
     public void depositar(double valorDeposito) {
         try {
             this.novoSaldo = mc.getSaldo() + valorDeposito;
+            mc.setValorSacarDepositarTransferir(valorDeposito);
             mc.setSaldo(this.novoSaldo);
             JOptionPane.showMessageDialog(null, "Depositado com sucesso\n Novo saldo: " + mc.getSaldo());
+            mc.setTipoDeTransacao("e");
             usuarioDao.updateConta(mc);
+            
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Erro" + ex.getMessage());
         }
@@ -39,7 +42,9 @@ public class ContaCorrente extends ModelSacarDepositar {
         if (mc.getSaldo() >= valorSaque) {
             try {
                 this.novoSaldo = mc.getSaldo() - valorSaque;
+                mc.setValorSacarDepositarTransferir(valorSaque);
                 mc.setSaldo(this.novoSaldo);
+                mc.setTipoDeTransacao("s");
                 usuarioDao.updateConta(mc);
               WinmmAbrir.Abrir();
                 JOptionPane.showMessageDialog(null, "Sacado com sucesso retire seu dinheiro na bandeja de dvd \n Novo saldo: " + mc.getSaldo());
@@ -55,7 +60,9 @@ public class ContaCorrente extends ModelSacarDepositar {
         if (mc.getSaldo() >= valorTranferir) {
             try {
                 this.novoSaldo = mc.getSaldo() - valorTranferir;
+                mc.setValorSacarDepositarTransferir(valorTranferir);
                 mc.setSaldo(this.novoSaldo);
+                mc.setTipoDeTransacao("t"+mc.getBusca_usuario());
                 usuarioDao.transferir(mc);
                 JOptionPane.showMessageDialog(null, "Transferido com sucesso\n Novo saldo: " + mc.getSaldo());
             } catch (Exception ex) {

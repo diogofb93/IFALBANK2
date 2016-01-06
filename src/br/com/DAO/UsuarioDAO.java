@@ -103,6 +103,22 @@ public class UsuarioDAO {
             System.out.println("Erro " + ex.getMessage());
         }
     }
+    
+    public void inserirTransacao(ModelConta mc) throws Exception {
+        this.conexao.conectar();
+        try {
+            PreparedStatement ps = conexao.con.prepareStatement("INSERT INTO TRANSACAO(ID_USUARIO,TIPO,VALOR) VALUES(?,?,?)");
+            ps.setInt(1, mc.getN_usuario());
+            ps.setString(2, mc.getTipoDeTransacao());
+            ps.setDouble(3, mc.getValorSacarDepositarTransferir());
+            ps.execute();
+            System.out.println("Inserido transacao");
+            
+        } catch (SQLException ex) {
+            System.out.println("Erro" + ex.getMessage());
+        }
+
+    }
 
     public void updateConta(ModelConta mc) throws Exception {
         this.conexao.conectar();
@@ -110,6 +126,7 @@ public class UsuarioDAO {
         PreparedStatement ps = this.conexao.con.prepareStatement("UPDATE cliente SET SALDO= ? WHERE ID_USUARIO = ?");
         ps.setDouble(1, mc.getSaldo());
         ps.setInt(2, mc.getN_usuario());
+        inserirTransacao(mc);
         ps.executeUpdate();
         conexao.desconectar();
     }
@@ -129,10 +146,10 @@ public class UsuarioDAO {
             //transfere
             this.conexao.conectar();
             PreparedStatement prepare = this.conexao.con.prepareStatement("UPDATE cliente SET SALDO= ? WHERE ID_USUARIO = ?");
-
             prepare.setDouble(1, SaldoContaTransfere);
             prepare.setInt(2, mc.getBusca_usuario());
             prepare.executeUpdate();
+            inserirTransacao(mc);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro" + ex.getMessage());
         }

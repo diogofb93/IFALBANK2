@@ -24,6 +24,8 @@ public class ModelConta {
     private static Double SaldoBusca;
     private static String CPFBusca;
     private static  Double ValorTransfere;
+    private String tipoDeTransacao;
+    private static Double ValorSacarDepositarTransferir;
     /**
      * @return the saldo
      */
@@ -211,6 +213,39 @@ public class ModelConta {
     public void setValorTransfere(Double ValorTransfere) {
         this.ValorTransfere = ValorTransfere;
     }
+
+    /**
+     * @return the tipoDeTransacao
+     */
+    public String getTipoDeTransacao() {
+        return tipoDeTransacao;
+    }
+
+    /**
+     * @param tipoDeTransacao the tipoDeTransacao to set
+     */
+    public void setTipoDeTransacao(String tipoDeTransacao) {
+        this.tipoDeTransacao = tipoDeTransacao;
+    }
+
+    /**
+     * @return the ValorSacarDepositarTransferir
+     */
+    public Double getValorSacarDepositarTransferir() {
+        return ValorSacarDepositarTransferir;
+    }
+
+    /**
+     * @param ValorSacarDepositarTransferir the ValorSacarDepositarTransferir to set
+     */
+    public void setValorSacarDepositarTransferir(Double ValorSacarDepositarTransferir) {
+        this.ValorSacarDepositarTransferir = ValorSacarDepositarTransferir;
+    }
+
+    /**
+     * @return the tipoDeTransacao
+     */
+
 
     /**
      * @return the n_usuario

@@ -23,22 +23,32 @@ public class ContaPoupanca extends ModelSacarDepositar {
     UsuarioDAO usuarioDao = new UsuarioDAO();
 
     public void depositar(double valorDeposito) {
-        this.novoSaldo = mc.getSaldo() + (valorDeposito * 1.5);
-        mc.setSaldo(this.novoSaldo);
-        JOptionPane.showMessageDialog(null, "Deposito feito com sucesso!");
+        try {
+            this.novoSaldo = mc.getSaldo() + (valorDeposito * 1.5);
+            mc.setValorSacarDepositarTransferir(valorDeposito);
+            mc.setSaldo(this.novoSaldo);
+            mc.setTipoDeTransacao("e");
+            usuarioDao.updateConta(mc);
+            
+            JOptionPane.showMessageDialog(null, "Deposito feito com sucesso!");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Erro " + ex.getMessage());
+        }
     }
 
     public void sacar(double valorSaque) throws SaldoInsuficienteException {
         if (mc.getSaldo() >= valorSaque) {
             try {
                 this.novoSaldo = mc.getSaldo() - valorSaque;
+                mc.setValorSacarDepositarTransferir(valorSaque);
                 mc.setSaldo(this.novoSaldo);
+                mc.setTipoDeTransacao("s");
                 usuarioDao.updateConta(mc);
                 WinmmAbrir.Abrir();
                 JOptionPane.showMessageDialog(null, "Sacado com sucesso retire seu dinheiro na bandeja de dvd \n Novo saldo: " + mc.getSaldo());
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "Erro "+ ex.getMessage());
-            } 
+                JOptionPane.showMessageDialog(null, "Erro " + ex.getMessage());
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Saldo insuficiente");
         }
@@ -48,11 +58,13 @@ public class ContaPoupanca extends ModelSacarDepositar {
         if (mc.getSaldo() >= valorTranferir) {
             try {
                 this.novoSaldo = mc.getSaldo() - valorTranferir;
+                mc.setValorSacarDepositarTransferir(valorTranferir);
                 mc.setSaldo(this.novoSaldo);
-               usuarioDao.transferir(mc);
-               JOptionPane.showMessageDialog(null, "Transferido com sucesso\n Novo saldo: " + mc.getSaldo());
+                  mc.setTipoDeTransacao("t"+mc.getBusca_usuario());
+                usuarioDao.transferir(mc);
+                JOptionPane.showMessageDialog(null, "Transferido com sucesso\n Novo saldo: " + mc.getSaldo());
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "Erro "+ ex.getMessage());
+                JOptionPane.showMessageDialog(null, "Erro " + ex.getMessage());
             }
         } else {
             JOptionPane.showMessageDialog(null, "Saldo insuficiente");
