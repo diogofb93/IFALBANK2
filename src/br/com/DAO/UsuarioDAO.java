@@ -103,7 +103,7 @@ public class UsuarioDAO {
             System.out.println("Erro " + ex.getMessage());
         }
     }
-    
+
     public void inserirTransacao(ModelConta mc) throws Exception {
         this.conexao.conectar();
         try {
@@ -113,7 +113,7 @@ public class UsuarioDAO {
             ps.setDouble(3, mc.getValorSacarDepositarTransferir());
             ps.execute();
             System.out.println("Inserido transacao");
-            
+
         } catch (SQLException ex) {
             System.out.println("Erro" + ex.getMessage());
         }

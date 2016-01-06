@@ -37,7 +37,8 @@ public class ContaBO {
             System.out.println("Valor invalido");
         }
     }
-     public void validarTransferir(double valorTransferir) throws ValorInvalidoException {
+
+    public void validarTransferir(double valorTransferir) throws ValorInvalidoException {
         if (valorTransferir > 0) {
             msd.transferir(valorTransferir);
         } else {
