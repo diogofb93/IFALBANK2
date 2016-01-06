@@ -202,18 +202,18 @@ public class ViewTransferir extends javax.swing.JFrame {
 
     private void jButtonTransferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTransferirActionPerformed
         // TODO add your handling code here:
-         ModelConta mc = new ModelConta();
+        ModelConta mc = new ModelConta();
         ModelSacarDepositar msd;
         UsuarioDAO usuarioDao = new UsuarioDAO();
-         Double transferir = Double.parseDouble(jTextFieldValorTransferir.getText());
-         mc.setValorTransfere(transferir);
+        Double transferir = Double.parseDouble(jTextFieldValorTransferir.getText());
+        mc.setValorTransfere(transferir);
         if (mc.getTipo().equalsIgnoreCase("corrente")) {
             msd = new ContaCorrente();
             this.contaBo = new ContaBO(msd);
-           
+
             try {
                 contaBo.validarTransferir(transferir);
-                
+
                 telaPrincipal.setVisible(true);
                 dispose();
             } catch (ValorInvalidoException ex) {
@@ -227,7 +227,7 @@ public class ViewTransferir extends javax.swing.JFrame {
             this.contaBo = new ContaBO(msd);
             try {
                 contaBo.validarTransferir(transferir);
-                
+
                 telaPrincipal.setVisible(true);
                 dispose();
             } catch (ValorInvalidoException ex) {
@@ -235,13 +235,13 @@ public class ViewTransferir extends javax.swing.JFrame {
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Erro" + ex.getMessage());
             }
-        
-        }   
+
+        }
     }//GEN-LAST:event_jButtonTransferirActionPerformed
 
     private void jTextFieldNomeDoDonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeDoDonoActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jTextFieldNomeDoDonoActionPerformed
 
     private void jTextFieldValorTransferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldValorTransferirActionPerformed

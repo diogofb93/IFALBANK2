@@ -28,7 +28,6 @@ public class ViewDepositar extends javax.swing.JFrame {
     /**
      * Creates new form ViewDepositar
      */
-
     public ViewDepositar() {
         initComponents();
 
@@ -167,7 +166,7 @@ public class ViewDepositar extends javax.swing.JFrame {
             Double deposito = Double.parseDouble(jTextFieldDeposito.getText());
             try {
                 contaBo.validarDeposito(deposito);
-                
+
                 JOptionPane.showMessageDialog(null, "Depositado com sucesso\n Novo saldo: " + mc.getSaldo());
                 telaPrincipal.setVisible(true);
                 dispose();

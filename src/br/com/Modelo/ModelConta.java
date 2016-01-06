@@ -23,9 +23,10 @@ public class ModelConta {
     private static String tipoBusca;
     private static Double SaldoBusca;
     private static String CPFBusca;
-    private static  Double ValorTransfere;
+    private static Double ValorTransfere;
     private String tipoDeTransacao;
     private static Double ValorSacarDepositarTransferir;
+
     /**
      * @return the saldo
      */
@@ -236,7 +237,8 @@ public class ModelConta {
     }
 
     /**
-     * @param ValorSacarDepositarTransferir the ValorSacarDepositarTransferir to set
+     * @param ValorSacarDepositarTransferir the ValorSacarDepositarTransferir to
+     * set
      */
     public void setValorSacarDepositarTransferir(Double ValorSacarDepositarTransferir) {
         this.ValorSacarDepositarTransferir = ValorSacarDepositarTransferir;
@@ -245,8 +247,6 @@ public class ModelConta {
     /**
      * @return the tipoDeTransacao
      */
-
-
     /**
      * @return the n_usuario
      */

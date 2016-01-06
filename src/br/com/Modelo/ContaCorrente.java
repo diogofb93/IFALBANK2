@@ -31,7 +31,7 @@ public class ContaCorrente extends ModelSacarDepositar {
             JOptionPane.showMessageDialog(null, "Depositado com sucesso\n Novo saldo: " + mc.getSaldo());
             mc.setTipoDeTransacao("e");
             usuarioDao.updateConta(mc);
-            
+
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Erro" + ex.getMessage());
         }
@@ -46,12 +46,12 @@ public class ContaCorrente extends ModelSacarDepositar {
                 mc.setSaldo(this.novoSaldo);
                 mc.setTipoDeTransacao("s");
                 usuarioDao.updateConta(mc);
-              WinmmAbrir.Abrir();
+                WinmmAbrir.Abrir();
                 JOptionPane.showMessageDialog(null, "Sacado com sucesso retire seu dinheiro na bandeja de dvd \n Novo saldo: " + mc.getSaldo());
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Erro" + ex.getMessage());
             }
-        }else {
+        } else {
             JOptionPane.showMessageDialog(null, "Saldo insuficiente");
         }
     }
@@ -62,11 +62,11 @@ public class ContaCorrente extends ModelSacarDepositar {
                 this.novoSaldo = mc.getSaldo() - valorTranferir;
                 mc.setValorSacarDepositarTransferir(valorTranferir);
                 mc.setSaldo(this.novoSaldo);
-                mc.setTipoDeTransacao("t"+mc.getBusca_usuario());
+                mc.setTipoDeTransacao("t" + mc.getBusca_usuario());
                 usuarioDao.transferir(mc);
                 JOptionPane.showMessageDialog(null, "Transferido com sucesso\n Novo saldo: " + mc.getSaldo());
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "Erro "+ ex.getMessage());
+                JOptionPane.showMessageDialog(null, "Erro " + ex.getMessage());
             }
         } else {
             JOptionPane.showMessageDialog(null, "Saldo insuficiente");

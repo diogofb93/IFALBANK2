@@ -29,7 +29,7 @@ public class ContaPoupanca extends ModelSacarDepositar {
             mc.setSaldo(this.novoSaldo);
             mc.setTipoDeTransacao("e");
             usuarioDao.updateConta(mc);
-            
+
             JOptionPane.showMessageDialog(null, "Deposito feito com sucesso!");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Erro " + ex.getMessage());
@@ -60,7 +60,7 @@ public class ContaPoupanca extends ModelSacarDepositar {
                 this.novoSaldo = mc.getSaldo() - valorTranferir;
                 mc.setValorSacarDepositarTransferir(valorTranferir);
                 mc.setSaldo(this.novoSaldo);
-                  mc.setTipoDeTransacao("t"+mc.getBusca_usuario());
+                mc.setTipoDeTransacao("t" + mc.getBusca_usuario());
                 usuarioDao.transferir(mc);
                 JOptionPane.showMessageDialog(null, "Transferido com sucesso\n Novo saldo: " + mc.getSaldo());
             } catch (Exception ex) {
